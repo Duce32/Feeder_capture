@@ -106,3 +106,14 @@ All scripts now use local file paths within the repository directory structure.
 - One servo motor connected to pin 17
 - PIR motion sensor on pin 4
 - Network connectivity for TinyTuya API calls
+- Smart pet feeders compatible with Tuya (recommended: [WOPET 6L Automatic Cat Feeder, WiFi Automatic Dog Feeder](https://a.co/d/iWvjJys))
+
+### Physical Setup Images
+
+#### Servo Positions
+- ![90 Degree Position](RES/90py.png) - Door open position
+- ![120 Degree Position](RES/120py.png) - Door closed position
+
+#### 3D Models
+- Door catch mechanism: `RES/Trixie_catch.stl` and `RES/Trixie_catch.3mf`
+- Servo housing with linear actuator: `RES/Servo-mnv-linear2.stl` and `RES/Servo-mnv-linear2.3mf`
