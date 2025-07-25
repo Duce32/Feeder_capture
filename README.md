@@ -4,7 +4,7 @@ This repository contains a Raspberry Pi-based automated pet feeding and containm
 
 ## Project Overview
 
-This is a Raspberry Pi-based automated pet feeding and containment system that controls servo motors for door mechanisms and smart feeders for pets named Trixie and Pickles. The system uses various sensors (PIR motion, tilt switch) to detect pet presence and automate feeding sequences.
+This is a Raspberry Pi-based automated pet feeding and containment system that controls a servo motor for door mechanisms and smart feeders for pets named Trixie and Pickles. The system uses PIR motion sensors to detect pet presence and automate feeding sequences.
 
 ## Architecture
 
@@ -12,26 +12,32 @@ The codebase consists of standalone Python scripts that work together to create 
 
 ### Core Components
 
-- **Servo Control Scripts**: `120.py`, `90.py`, `close.py`, `open.py` - Control servo motors for door mechanisms
+- **Servo Control Scripts**: `120.py`, `90.py`, `close.py`, `open.py` - Control servo motor for door mechanism
   - Door servo (GPIO 17): Controls entry/exit door
-  - Capture servo (GPIO 27): Controls secondary containment mechanism
-- **Sensor Monitoring**: `check_entry.py` - Main control loop monitoring tilt switch and PIR sensors
+- **Sensor Monitoring**: `check_entry.py` - Main control loop monitoring PIR sensors
 - **Feeder Control**: `myfeeder2.py` - Controls smart feeders via TinyTuya cloud API
 
 ### Hardware Integration
 
 - **GPIO Pins**:
   - Pin 17: Door servo motor
-  - Pin 27: Capture servo motor  
-  - Pin 18: SW520D tilt switch sensor
   - Pin 4: PIR motion sensor
 - **External APIs**: TinyTuya cloud service for smart feeder control
 
+#### GPIO Pin Layout
+![Raspberry Pi GPIO Layout](RES/RaspberryPI-output.png)
+
+#### Servo Housing and Actuator
+![Servo Housing Actuator](RES/Servo_housing_Actuator.png)
+
+#### Door Hasp Mechanism
+![Door Hasp](RES/Door_Hasp.png)
+
 ### Control Flow
 
-1. `check_entry.py` monitors for door tilt sensor activation
+1. `check_entry.py` monitors PIR sensor for pet presence
 2. When triggered, executes `120.py` to close door servo
-3. Monitors PIR sensor for pet presence in containment area
+3. Continues monitoring PIR sensor for pet presence in containment area
 4. Triggers feeding sequence via `myfeeder2.py` for both pets
 5. Opens door after delay using `open.py`
 
@@ -97,7 +103,6 @@ All scripts now use local file paths within the repository directory structure.
 ## Hardware Requirements
 
 - Raspberry Pi with GPIO access
-- Two servo motors connected to pins 17 and 27
-- SW520D tilt switch on pin 18
+- One servo motor connected to pin 17
 - PIR motion sensor on pin 4
 - Network connectivity for TinyTuya API calls
