@@ -111,9 +111,12 @@ All scripts now use local file paths within the repository directory structure.
 ### Physical Setup Images
 
 #### Servo Positions
-- ![90 Degree Position](RES/90py.png) - Door open position
-- ![120 Degree Position](RES/120py.png) - Door closed position
+- ![90 Degree Position](RES/90py.png) - Door trap position allows entry but no exit.
+- ![120 Degree Position](RES/120py.png) - Door locked position no entry or exit. When this happens the PIR sensor must have been triggered.
 
 #### 3D Models
 - Door catch mechanism: `RES/Trixie_catch.stl` and `RES/Trixie_catch.3mf`
 - Servo housing with linear actuator: `RES/Servo-mnv-linear2.stl` and `RES/Servo-mnv-linear2.3mf`
+
+#### Observations and Notes
+Trixie, being a young female Chihuahua, would figure out a way to stay outside of the device, so I used the Tuya API for the pet feeder to only drop food when she is in the crate, and it would not drop my other dog Pickles' food until she was detected inside the crate. The routine starts at 12 noon and 6 PM. Thirty seconds after her food drops, Pickles' feeder drops his food. There are fail-safes for Trixie, where I set a cron job for an auto-release at a designated time after the food drops.
